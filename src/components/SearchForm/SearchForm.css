@@ -1,0 +1,123 @@
+.search-form {
+  margin: 70px 0;
+  display: flex;
+  flex-direction: row;
+  border-radius: 9px;
+  background: #FDFDFD;
+  box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
+  min-height: 72px;
+  align-items: center;
+}
+
+.search-form__img {
+  margin: 19px 10px 19px 19px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.search-form__form {
+  margin: 16px 29px 16px 0;
+  border-right: 1px solid #CBCBCB;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 21px;
+  width: 100%;
+}
+
+.search-form__input {
+  background-color: inherit;
+  border: none;
+  color: #A0A0A0;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  width: 100%;
+}
+
+.search-form__button {
+  margin-right: 19px;
+  color: #FFF;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  background-color: black;
+  border-radius: 48px;
+  border: none;
+  width: 65px;
+  height: 34px;
+}
+
+.search-form__wrap{
+  display: flex;
+  flex-direction: row;
+}
+
+.search-form__short-film {
+  margin: 0 30px 0 14px;
+  color: #000;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+@media screen and (min-width: 890px) {
+  .search-form__button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 2s ease;
+  }
+
+}
+
+@media screen and (max-width: 890px) {
+  .search-form {
+    margin: 80px 0 109px;
+  }
+
+  .search-form__short-film {
+    margin: 0 20px 0 15px;
+  }
+}
+
+@media screen and (max-width: 734px) {
+  .search-form {
+    margin: 80px 0 44px;
+    box-shadow: none;
+    flex-direction: column;
+  }
+
+  .search-form__img {
+    display: none;
+  }
+
+  .search-form__form {
+    box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
+    border: none;
+    margin: 19px 19px 19px 19px;
+    height: 72px;
+    align-items: center;
+    border-radius: 9px;
+    margin: 0;
+    margin-bottom: 45px;
+  }
+
+  .search-form__input {
+    margin-left: 19px;
+    font-size: 14px;
+  }
+
+  .search-form__button{
+    width: 80px;
+  }
+
+  .search-form__short-film{
+    font-size: 11px;
+  }
+
+}

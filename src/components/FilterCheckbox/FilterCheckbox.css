@@ -1,0 +1,5 @@
+.search-form__checkbox {
+  object-fit: contain;
+  object-position: center;
+  cursor: pointer;
+}
