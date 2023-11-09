@@ -21,6 +21,7 @@ function App() {
       {window.location.pathname === "/profile" && <Header />}
       {window.location.pathname === "/movies" && <Header />}
       {window.location.pathname === "/saved-movies" && <Header />}
+      <main>
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/signup" element={<Register/>} />
@@ -30,6 +31,7 @@ function App() {
         <Route path="/saved-movies" element={ <SavedMovies />} />
         <Route path="/" element={<Main />} />
       </Routes>
+      </main>
       {window.location.pathname === "/" && <Footer />}
       {window.location.pathname === "/movies" && <Footer />}
       {window.location.pathname === "/saved-movies" && <Footer />}

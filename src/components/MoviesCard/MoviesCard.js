@@ -31,7 +31,7 @@ export function MoviesCard(props) {
   return (
     <article className="movie" >
       {isPathSavedMovies()}
-      <img className="movie__img" src={moviePic} alt="Обложка фильма"/>
+      <img className="movie__img" src={moviePic} alt={props.nameRU}/>
       <h2 className="movie__title">33 слова о дизайне</h2>
       <p className="movie__duration">1ч 17м</p>
     </article>

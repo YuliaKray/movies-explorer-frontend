@@ -18,7 +18,7 @@ export function AboutMe() {
           </p>
           <a className='about-me__git' href='https://github.com/YuliaKray' target="_blank">Githab</a>
         </div>
-        <img className='about-me__photo' alt='Фотография' src={photo} />
+        <img className='about-me__photo' alt='Фотография студента' src={photo} />
       </div>
     </section>
   )

@@ -1,6 +1,8 @@
 .App {
   background-color: #fff;
   font-family: 'Inter', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 /* .App-header {

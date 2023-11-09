@@ -13,14 +13,16 @@ export function Profile() {
     if (isRedact) {
       return (
         <>
-         <span id="error-profile" className="profile__error-message">Что-то пошло не так...</span>
+          <span id="error-profile" className="profile__error-message">Что-то пошло не так...</span>
           <button className="profile__button-save" onClick={handleClick}>Сохранить</button>
         </>
       )
     } else {
       return (
         <>
-          <button className="profile__button" onClick={handleClick}>Редактировать</button>
+          <button className="profile__button"
+            type="button"
+            onClick={handleClick}>Редактировать</button>
           <a className="profile__exit" href="/">Выйти из аккаунта</a>
         </>
       )
@@ -29,13 +31,14 @@ export function Profile() {
 
 
   return (
-    <section className="profile">
-      <h2 className="profile__title">Привет, Юлия!</h2>
+    <section className="profile"> {/*Вот тег section */}
+      <h1 className="profile__title">Привет, Юлия!</h1>
       <form className="profile__form">
         <div className="profile__wrap">
-          <p className="profile__input-name">Имя</p>
+          <label className="profile__input-name" for="profile-name">Имя</label>
           <input
             className="profile__input profile__input_name"
+            id="profile-name"
             value={'Юлия'}
             placeholder="Имя"
             type="text"
@@ -44,9 +47,10 @@ export function Profile() {
             minLength="2"
             maxLength="40"
           />
-          <p className="profile__input-name">Почта</p>
+          <label className="profile__input-name" for="profile-email">Почта</label>
           <input
             className="profile__input profile__input_email"
+            id="profile-email"
             value={'pochta@yandex.ru'}
             placeholder="Почта"
             type="email"

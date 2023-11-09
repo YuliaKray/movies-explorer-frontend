@@ -6,6 +6,9 @@
   justify-content: space-between;
   max-width: 1140px;
   padding: 0 calc((100% - 1140px)/2);
+  width: calc( 100% - 140px );
+  /* width: 100%; */
+  /* box-sizing: border-box; */
 }
 
 .header_pink {
@@ -27,6 +30,7 @@
 @media screen and (max-width: 1290px) {
   .header {
     padding: 0 70px;
+    width: calc( 100% - 140px );
   }
 }
 
@@ -40,11 +44,14 @@
 @media screen and (max-width: 890px) {
   .header {
     padding: 0 30px;
+    width: calc( 100% - 60px );
+    /* box-sizing: border-box; */
   }
 }
 
 @media screen and (max-width: 734px) {
   .header {
     padding: 0 14px;
+    width: calc( 100% - 28px );
   }
 }

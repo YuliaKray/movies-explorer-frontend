@@ -5,23 +5,25 @@ export function MoviesCardList(props) {
 
   return (
     <section className="movies-list">
-      <div className="movies-list__container" >
-        <MoviesCard
+      <ul className="movies-list__container" >
+        <li><MoviesCard
           isSavedMovies={props.isSavedMovies}
-        />
-        <MoviesCard isSaved={true}
+        /></li>
+        <li><MoviesCard isSaved={true}
           isSavedMovies={props.isSavedMovies}
-        />
-        <MoviesCard
+        /></li>
+        <li><MoviesCard
           isSavedMovies={props.isSavedMovies}
-        />
-        <MoviesCard
+        /></li>
+        <li><MoviesCard
           isSavedMovies={props.isSavedMovies}
-        />
+        /></li>
 
-      </div>
+      </ul>
 
-      <button className={`movies-list__more-button ${props.isSavedMovies ? "" : "movies-list__more-button_visidle"}`} >Ещё</button>
+      <button className={`movies-list__more-button ${props.isSavedMovies ? "" : "movies-list__more-button_visidle"}`}
+        type="button"
+      >Ещё</button>
     </section>
   )
 }

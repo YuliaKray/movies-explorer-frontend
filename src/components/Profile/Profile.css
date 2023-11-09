@@ -65,6 +65,12 @@
   border-bottom: none;
 }
 
+.profile__input:focus {
+  outline: 1px solid black;
+  border-radius: 3px;
+}
+
+
 .profile__button {
   margin-top: 200px;
   padding: 0;

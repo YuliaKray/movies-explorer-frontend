@@ -26,9 +26,9 @@ export function Navigation(props) {
           <li><NavLink className={({isActive}) => ` navigation__link navigation__link_profile ${nav ? "navigation__link_profile-active" : ""} ${isActive ? "navigation__link_focus" : ""}`}
            to='/profile' reloadDocument>
             <p className={`navigation__profile-link ${nav ? "navigation__profile-link_active" : ""}`}>Аккаунт</p>
-            <button className={`navigation__button ${props.backgroundColor&&(!nav) ? '' : 'navigation__button_grey'}`}>
+            <div className={`navigation__button ${props.backgroundColor&&(!nav) ? '' : 'navigation__button_grey'}`}>
               <img className='navigation__profile-img' src={props.backgroundColor&&(!nav) ? profilePink : profileBlack} alt='Профиль' />
-            </button>
+            </div>
           </NavLink></li>
         </ul>
         <img className='navigation__burger-menu'
@@ -41,6 +41,7 @@ export function Navigation(props) {
   }
 
   function guest() {
+    // navigation__links-guest входит в элемент навигации, который обозначается тегом nav
     return (
       <ul className="navigation__links-guest">
         <li><a className='navigation__link-guest' href='/signup'>Регистрация</a></li>
@@ -52,7 +53,7 @@ export function Navigation(props) {
   }
 
   return (
-    <nav className="navigation">
+    <nav className="navigation"> {/*вот тег nav */}
       <img
         className={`navigation__close ${nav ? "navigation__close_active" : ""}`}
         src={closeButton}
@@ -61,7 +62,7 @@ export function Navigation(props) {
       />
       <div className={`navigation__background ${nav ? "navigation__background_active" : ""}`} />
       {/* {login()} */}
-      {props.loggedIn ? login() : guest()}
+      {props.loggedIn ? login() : guest()} {/*здесь отрабатывают функции выбора между логина и guest*/}
     </nav>
   )
 }

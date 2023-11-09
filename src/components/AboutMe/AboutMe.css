@@ -91,7 +91,8 @@
 
 @media screen and (max-width: 890px) {
   .about-me {
-    padding: 0 50px 70px;
+    /* padding: 0 50px 70px; */
+    padding: 0 50px 91px;
     min-width: 284px;
   }
 
@@ -103,7 +104,7 @@
 
   .about-me__photo {
     width: 255px;
-    height: 307x;
+    height: 307px;
   }
 
   .about-me__name {
@@ -131,7 +132,9 @@
 
 @media screen and (max-width: 734px) {
   .about-me {
-    padding: 0 14px 70px;
+    /* padding: 0 14px 70px; */
+    padding: 0 14px 68px;
+
   }
 
   .about-me__header {
@@ -145,11 +148,12 @@
 
   .about-me__wrap {
     flex-wrap: wrap-reverse;
+    gap: 36px;
   }
 
   .about-me__photo {
     width: 292px;
-    height: 352x;
+    height: 352px;
   }
 
   .about-me__name {

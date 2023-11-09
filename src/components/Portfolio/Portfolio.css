@@ -83,7 +83,9 @@
 
 @media screen and (max-width: 734px) {
   .portfolio {
-    padding: 0 14px 65px;
+    /* padding: 0 14px 65px; */
+    padding: 0 14px 74px;
+
   }
 
   .portfolio__title {

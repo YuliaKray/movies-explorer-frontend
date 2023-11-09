@@ -6,9 +6,10 @@ export function Forms(props) {
     if (props.path) {
       return(
         <>
-        <p className="forms__input-title">Имя</p>
+        <label className="forms__input-title" for="forms-name">Имя</label>
         <input
           // value={email || ''}
+          id="forms-name"
           placeholder="Имя"
           className="forms__input forms__input_type_name "
           type="text"
@@ -25,15 +26,16 @@ export function Forms(props) {
   return (
     <section className="forms" aria-label="Зарегистрироваться">
       <a href="/" className="forms__logo" title="На главную"></a>
-      <h2 className="forms__heading">{props.heading}</h2>
+      <h1 className="forms__heading">{props.heading}</h1>
       <form
         className="forms__form"
         // name="form" 
         noValidate>
         {isSignup()}
-        <p className="forms__input-title">E-mail</p>
+        <label className="forms__input-title" for="forms-email">E-mail</label>
         <input
           // value={email || ''}
+          id="forms-email"
           placeholder="E-mail"
           className="forms__input forms__input_type_email"
           type="email"
@@ -44,9 +46,10 @@ export function Forms(props) {
         />
         <span id="error-email" className="forms__error-message">Что-то пошло не так...</span>
 
-        <p className="forms__input-title">Пароль</p>
+        <label className="forms__input-title" for="forms-password">Пароль</label>
         <input
           // value={password || ''}
+          id="forms-password"
           placeholder="Пароль"
           className="forms__input forms__input_type_password"
           type="password"

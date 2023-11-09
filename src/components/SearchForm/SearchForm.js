@@ -7,15 +7,21 @@ export function SearchForm() {
     <section className="search-form">
       <img className="search-form__img" src={searchPic} alt="Лупа" />
       <form className="search-form__form">
+        <div className="search-form__form-wrap">
         <input className="search-form__input"
-          placeholder="Фильм" />
+          placeholder="Фильм"
+          type="text"
+          name="movie"
+          required/>
         <button className="search-form__button">Найти</button>
-      </form>
+        </div>
+      {/* </form> */}
       {/* здесь будут короткометражки */}
       <div className="search-form__wrap">
         <FilterCheckbox />
         <p className="search-form__short-film">Короткометражки</p>
       </div>
+      </form>
     </section>
   )
 }
