@@ -1,0 +1,230 @@
+.profile {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  max-width: 410px;
+}
+
+.profile__title {
+  margin: 74px 0 0;
+  text-align: center;
+  color: #000;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.profile__form {
+  margin-top: 110px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__wrap {
+  /* max-width: 410px; */
+  display: grid;
+  grid-template-columns: repeat(2, 205px);
+  grid-template-rows: repeat(2, fit-content);
+  position: relative;
+  /* border-bottom: 1px solid #E8E8E8; */
+}
+
+.profile__input-name {
+  margin: 0;
+  padding: 17px 0;
+  color: #000;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.profile__input-name:last-of-type {
+  border-bottom: none;
+}
+
+.profile__input {
+  padding: 17px 0;
+  color: #000;
+  text-align: right;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.profile__input:last-of-type {
+  border-bottom: none;
+}
+
+.profile__input:focus {
+  outline: 1px solid black;
+  border-radius: 3px;
+}
+
+
+.profile__button {
+  margin-top: 200px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  color: #000;
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.profile__exit {
+  margin: 16px 0 20px;
+  text-decoration: none;
+  color: #FF4062;
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.profile__button-save {
+  margin: 20px 0 20px;
+  height: 45px;
+  background-color: #3456F3;
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  border-radius: 3px;
+  box-sizing: border-box;
+
+}
+
+.profile__error-message {
+  margin-top: 189px;
+  visibility: hidden;
+  height: fit-content;
+  z-index: 1;
+  min-height: 14px;
+  color: #FF004C;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.profile__error-message_visible {
+  visibility: visible;
+}
+
+@media screen and (min-width: 890px) {
+  .profile__button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 2s ease;
+  }
+
+  .profile__exit:hover {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 2s ease;
+  }
+
+  .profile__button-save:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 2s ease;
+  }
+}
+
+
+@media screen and (max-width: 890px) {
+  .profile__title {
+    margin-top: 236px;
+  }
+
+  .profile__form {
+    margin-top: 83px;
+  }
+
+  .profile__button {
+    margin-top: 190px
+  }
+
+  .profile__error-message {
+    margin-top: 170px;
+  }
+}
+
+@media screen and (max-width: 734px) {
+  .profile__title {
+    margin-top: 70px;
+  }
+
+  .profile__form {
+    margin: 70px 30px 0;
+  }
+
+  .profile__wrap {
+    grid-template-columns: repeat(2, minmax(130px, 205px));
+  }
+
+  .profile__button {
+    margin: 0;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 71px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .profile__exit {
+    margin: 0;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 40px;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .profile__button-save{
+    margin: 0;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 50px;
+    width: 260px;
+    text-align: center;
+  }
+
+  .profile__error-message{
+    margin: 0;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 115px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,144 @@
+.techs {
+  margin: auto;
+  padding: 0 70px;
+  background-color: #F5F5F5;
+}
+
+.techs__header {
+  margin: 0 auto;
+  padding-top: 100px;
+  padding-bottom: 23px;
+  max-width: 1140px;
+  text-align: left;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  border-bottom: 1px solid #000;
+  box-sizing: content-box;
+}
+
+.techs__title {
+  margin: 0;
+  padding-top: 90px;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+.techs__paragraph {
+  margin: 0 auto;
+  padding-top: 26px;
+  max-width: 460px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+.techs__list {
+  margin: 0;
+  padding: 100px 0;
+  list-style-type: none;
+  display: grid;
+  /* grid-template-columns: repeat(7, 90px);
+  grid-template-rows: 60px; */
+  grid-template-columns: repeat(auto-fit, 90px);
+  /* grid-template-rows: repeat(auto-fit, 60px); */
+  gap: 10px;
+  justify-content: center;
+  /* align-items: stretch; */
+}
+
+.techs__name {
+  background-color: #E8E8E8;
+  /* padding-top: 21px; */
+  padding: 21px 0 22px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: -0.04em;
+
+}
+
+@media screen and (max-width: 890px) {
+  .techs {
+    padding: 0 50px;
+    min-width: 284px;
+  }
+
+  .techs__header {
+    padding-top: 90px;
+    letter-spacing: -0.88px;
+  }
+
+  .techs__title {
+    padding-top: 80px;
+    letter-spacing: -2px;
+  }
+
+  .techs__paragraph {
+    padding-top: 22px;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 18px;
+    letter-spacing: -0.48px;
+  }
+
+  .techs__list {
+    padding: 83px 0 90px 0;
+    grid-template-columns: repeat(auto-fit, 84px);
+  }
+
+  .techs__name {
+    padding-bottom: 21px;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.48px;
+  }
+
+}
+
+@media screen and (max-width: 734px) {
+  .techs {
+    padding: 0 18px;
+    background-color: #fff;
+  }
+
+  .techs__header {
+    padding-top: 65px;
+    padding-bottom: 22px;
+    font-size: 18px;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.72px;
+  }
+
+  .techs__title {
+    padding-top: 55px;
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .techs__paragraph {
+    padding-top: 24px;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -0.44px;
+  }
+
+  .techs__list {
+    padding: 40px 53px 70px;
+  }
+
+  .techs__name {
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  }
+}
