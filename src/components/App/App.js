@@ -9,6 +9,7 @@ import { Register } from "../Register/Register";
 import { Profile } from "../Profile/Profile";
 import { Movies } from "../Movies/Movies";
 import { SavedMovies } from "../SavedMovies/SavedMovies";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import React from "react";
 
 
