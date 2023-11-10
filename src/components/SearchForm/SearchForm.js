@@ -4,7 +4,7 @@ import { FilterCheckbox } from "../FilterCheckbox/FilterCheckbox";
 
 export function SearchForm() {
   return (
-    <section className="search-form">
+    <section className="search-form" aria-label="Поиск фильмов">
       <img className="search-form__img" src={searchPic} alt="Лупа" />
       <form className="search-form__form">
         <div className="search-form__form-wrap">
