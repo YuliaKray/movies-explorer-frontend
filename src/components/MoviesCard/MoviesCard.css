@@ -47,7 +47,7 @@
 }
 
 .movie__img {
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   grid-column: span 2;
   width: 360px;

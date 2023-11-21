@@ -38,6 +38,10 @@
   display: none;
 }
 
+.navigation__link_focus {
+  font-weight: 500;
+}
+
 .navigation__profile-link {
   font-size: 14px;
   font-style: normal;
@@ -153,7 +157,7 @@
 
   .navigation__background_active {
     left: 0;
-  } 
+  }
 
   .navigation__links {
     padding-top: 159px;
@@ -193,6 +197,7 @@
   .navigation__link_focus {
     /* text-decoration: underline 2px; */
     /* padding-bottom: 4px; */
+    font-weight: 400;
     border-bottom: 2px solid black;
   }
 
@@ -279,8 +284,9 @@
   }
 
   .navigation__link
+
   /* _focus  */
-  {
+    {
     padding-bottom: 7px;
     Line-height: 21.78px;
   }
@@ -290,15 +296,16 @@
     bottom: 48px;
   }
 
-  .navigation__burger-menu{
+  .navigation__burger-menu {
     width: 40px;
   }
-  .navigation__close{
+
+  .navigation__close {
     flex-shrink: 0;
     top: 13px;
   }
 
-  .navigation__close_active{
+  .navigation__close_active {
     right: 13px;
   }
 

@@ -9,7 +9,7 @@ export function SavedMovies() {
       <SearchForm />
       {/* <Preloader/> */}
       <MoviesCardList 
-        isSavedMovies={true} 
+        isPathSavedMovies={true} 
       />
     </div>
   )
