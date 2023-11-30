@@ -12,8 +12,12 @@ export function SearchForm(props) {
   //   setInputValue(e.target.value)
   // }
   useEffect(() => {
+    // if (props.isPathSavedMovies) {
+
+    // } else {
     const lastSearchMovies = JSON.parse(localStorage.getItem('searchMovies'));
     setInput(lastSearchMovies.inputValues)
+    // }
   }, [])
 
   function handleSubmit (e) {

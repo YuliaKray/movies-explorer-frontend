@@ -93,7 +93,7 @@ export const editProfile = (userInfo) => {
     .then(res => handleResponse(res))
 }
 
-export const saveFilm = () => {
+export const saveFilm = (filmData) => {
   const token = localStorage.getItem('token');
   return fetch(`${BASE_URL}/movies`, {
     method: 'POST',
@@ -101,13 +101,26 @@ export const saveFilm = () => {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify({
+      country: filmData.country,
+      director: filmData.director,
+      duration: filmData.duration,
+      year: filmData.year,
+      description: filmData.description,
+      image: filmData.image,
+      trailerLink: filmData.trailerLink,
+      nameRU: filmData.nameRU,
+      nameEN: filmData.nameEN,
+      thumbnail: filmData.thumbnail,
+      movieId: filmData.movieId
+    })
   })
   .then(res => handleResponse(res))
 }
 
 export const deleteFilm = (filmData) => {
   const token = localStorage.getItem('token');
-  return fetch(`${BASE_URL}/movies/${filmData.movieId}`, {
+  return fetch(`${BASE_URL}/movies/${filmData._id}`, {
     method: 'DELETE',
     headers: {
       // authorization: this._authorization,

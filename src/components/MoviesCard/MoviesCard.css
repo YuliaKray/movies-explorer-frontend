@@ -7,6 +7,10 @@
   position: relative;
 }
 
+.movie_hidden{
+  display: none;
+}
+
 .movie__add {
   position: absolute;
   top: 14px;

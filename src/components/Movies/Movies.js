@@ -3,12 +3,14 @@ import { SearchForm } from "../SearchForm/SearchForm"
 import Preloader from "../Preloader/Preloader"
 import { MoviesCardList } from "../MoviesCardList/MoviesCardList"
 import { useEffect, useState } from "react";
+// import { deleteFilm } from "../../utils/MainApi";
 
 export function Movies(props) {
   const [findedMovies, setFindedMovies] = useState([]);
   // const [findedMovies, setFindedMovies] = useState(props.allMovies);
   const [isShort, setIsShort] = useState(false);
   const [inputValues, setInputValues] = useState('');
+  // const [isSaved, setIsSaved] = useState(false);
 
   // const [isLoading, setIsLoading] = useState(false);
 
@@ -27,6 +29,10 @@ export function Movies(props) {
   //   }
   //   // handleInputFilter();
   // }, [])
+
+  // useEffect(() => {
+  //   setFindedMovies(findedMovies)
+  // }, [props.findedMovies])
 
   function handleInputFilter() {
     props.getAllMovies();
@@ -59,19 +65,23 @@ export function Movies(props) {
     // }
 
   }
+  
+  // function findSavedMovies() {
+    
+  // }
 
   // хочу чтобы здесь обнавлялись фильмы
   useEffect(() => {
     // setFindedMovies(findedMovies);
-    const lastSearchMovies = JSON.parse(localStorage.getItem('searchMovies'));
-    if (lastSearchMovies && findedMovies.length === 0) {
-      // console.log(findedMovies)
-      setFindedMovies(lastSearchMovies.findedMovies);
-      setIsShort(lastSearchMovies.isShort);
-      setInputValues(lastSearchMovies.inputValues);
-      handleInputFilter()
-      console.log('первая часть эффукиа')
-    } else {
+    // const lastSearchMovies = JSON.parse(localStorage.getItem('searchMovies'));
+    // if (lastSearchMovies && findedMovies.length === 0) {
+    //   // console.log(findedMovies)
+    //   setFindedMovies(lastSearchMovies.findedMovies);
+    //   setIsShort(lastSearchMovies.isShort);
+    //   setInputValues(lastSearchMovies.inputValues);
+    //   handleInputFilter()
+    //   console.log('первая часть эффукиа')
+    // } else {
 
 
       setInputValues(inputValues);
@@ -88,11 +98,13 @@ export function Movies(props) {
 
       console.log('сработал второй эффект')
 
-    }
+    // }
 
 
   }, [isShort, // findedMovies, 
     inputValues])
+
+
 
   // useEffect(() => {
   //   localStorage.setItem('searchMovies', JSON.stringify({
@@ -147,6 +159,8 @@ export function Movies(props) {
   // }
 
 
+
+
   return (
     <div className="movies" >
       <SearchForm
@@ -157,12 +171,16 @@ export function Movies(props) {
         inputValues={inputValues}
         setInputValues={setInputValues}
         setIsShort={setIsShort}
+        isPathSavedMovies={false}
+
       />
       {props.isPreloader ? <Preloader /> :
         <MoviesCardList
           isPathSavedMovies={false}
           findedMovies={findedMovies}
           saveFilm={props.saveFilm}
+          savedMovies={props.savedMovies}
+          deleteFilm={props.deleteFilm}
         // setFindedMovies={setFindedMovies}
         // isShort={isShort}
         />}

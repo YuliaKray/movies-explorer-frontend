@@ -26,19 +26,23 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(true);
   const [isPreloader, setIsPreloader] = React.useState(false)
   const [allMovies, setAllMovies] = React.useState([]);
+  const [savedMovies, setSavedMovies] = React.useState([]);
   const navigate = useNavigate();
 
   React.useEffect(() => {
     setIsLoading(true)
     checkToken();
+    getSavedFilms();
     mainApi.getMe().then((user) => {
       setCurrentUser(user);
       setLoggedIn(true);
+      
       setIsLoading(false)
     }).catch((err) => {
       setIsLoading(false);
     })
   }, [])
+
 
   // React.useEffect(() => {
   //   const moviesFromStorage = localStorage.getItem('movies');
@@ -73,12 +77,37 @@ function App() {
     }
   }
 
-  function handleSaveMovie(film) {
-    mainApi.saveFilm(film)
-      //.then((film) => {})
+  function handleSaveMovie(newfilm) {
+    mainApi.saveFilm(newfilm)
+      .then((newfilm) => {
+        setSavedMovies([newfilm, ...savedMovies]);
+
+      })
       .catch((err) => {
         console.log(err);
       })
+  }
+
+  function getSavedFilms() {
+    mainApi.getSavedFilms()
+    .then((films) => {
+      setSavedMovies(films);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
+  function handleDeleteMovie(film) {
+    mainApi.deleteFilm(film)
+    .then(() => {
+      setSavedMovies((state) => state.filter((f) => f._id !== film._id ))
+    }
+    )
+    .catch((err) => {
+      console.log(err)
+    })
+
   }
 
   function handleUpdateProfile(userInfo) {
@@ -116,7 +145,7 @@ function App() {
       };
       mainApi.getMe().then((user) => {
         setCurrentUser(user);
-
+        getSavedFilms()
       })
         .catch((err) => {
           console.log(err)
@@ -137,6 +166,7 @@ function App() {
         if (res) {
           setLoggedIn(true);
           setIsLoading(false);
+          // getSavedFilms();
         }
 
       }).catch((err) => {
@@ -192,10 +222,15 @@ function App() {
               getAllMovies={getAllMovies}
               isPreloader={isPreloader}
               saveFilm={handleSaveMovie}
+              savedMovies={savedMovies}
+              deleteFilm={handleDeleteMovie}
             />} />}
             {isLoading ? handleTokenCheck : <Route path="/saved-movies" element={<ProtectedRoute
               component={SavedMovies}
-              loggedIn={loggedIn} />} />}
+              loggedIn={loggedIn}
+              savedMovies={savedMovies}
+              deleteFilm={handleDeleteMovie}
+            />} />}
 
           </Routes>
         </main>
