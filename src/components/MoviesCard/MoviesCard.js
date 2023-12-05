@@ -75,7 +75,8 @@ export function MoviesCard(props) {
     <article className="movie" key={props.film.id}>
       {isPathSavedMovies()}
       <img className="movie__img" 
-      src={props.isPathSavedMovies ? props.film.image : `https://api.nomoreparties.co/${props.film.image.url}`} 
+      // src={props.isPathSavedMovies ? props.film.image : `https://api.nomoreparties.co/${props.film.image.url}`} 
+      src={props.url} 
       alt={props.film.nameRU} 
       onClick={handleClick}/>
       <h2 className="movie__title">{props.film.nameRU}</h2>

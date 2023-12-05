@@ -1,73 +1,122 @@
 import { MoviesCard } from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLayoutEffect } from "react";
+
+// Хук для отслеживания ширины окна и смены отображаемых фильмов
+function useWindowWidth() {
+  const [size, setSize] = useState([0]);
+
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth]);
+    }
+    
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return size;
+}
+
 
 export function MoviesCardList(props) {
   const [isSaved, setIsSaved] = useState(false);
+  const [visibleFilm, setVisibleFilm] = useState(0)
+  const width = useWindowWidth();
 
-  
-  
 
-  // useEffect(() => {
-  //   getMovies()
-  // }, [props.findedMovies, props.savedMovies])
+  useEffect(() => {
+    if (width > 1279) {
+      setVisibleFilm(12)
+    }
+    if (width <= 1279) {
+      setVisibleFilm(8)
+    }
+    if (width < 760) {
+      setVisibleFilm(5)
+    }
+  }, [props.findedMovies, props.savedMovies, width])
 
   function getMovies() {
-    const filmsFromSearch = props.findedMovies.map((film) => {
+    if (props.isPathSavedMovies) {
+      return getSavedMovies()
+    } else {
+      return getMoviesForFilter()
+    }
+  }
 
-      if (props.isPathSavedMovies) {
+  function getMoviesForFilter() {
+    const filmsFromSearch = props.findedMovies.slice(0, visibleFilm).map((film) => {
+      const itemSavedMovie = props.savedMovies.map(item => {
+        return item.movieId
+      })
+
+      if (itemSavedMovie.includes(film.id)) {
+        const savedMovieItem = props.savedMovies.filter(item => {
+          if (film.id === item.movieId) {
+            return item
+          }
+        })
+        return savedMovieItem.map(item => (
+          // <li key={film.id}>
+          <MoviesCard
+            saveFilm={props.saveFilm}
+            deleteFilm={props.deleteFilm}
+            key={item.movieId}
+            isPathSavedMovies={props.isPathSavedMovies}
+            film={item}
+            url={item.image}
+            isSaved={true}
+          />
+          // </li>
+        ))
+      } else {
         return (
-          // <li key={props.isPathSavedMovies ? film.movieId : film.id}>
-            <MoviesCard
-              saveFilm={props.saveFilm}
-              deleteFilm={props.deleteFilm}
-              key={props.isPathSavedMovies ? film.movieId : film.id}
-              isPathSavedMovies={props.isPathSavedMovies}
-              film={film}
-              isSaved={true}
-            />
+          // <li key={film.id}>
+          <MoviesCard
+            saveFilm={props.saveFilm}
+            deleteFilm={props.deleteFilm}
+            key={film.id}
+            isPathSavedMovies={props.isPathSavedMovies}
+            film={film}
+            url={`https://api.nomoreparties.co/${film.image.url}`}
+            isSaved={false}
+          />
           // </li>
         )
-
-      } else {
-        const itemSavedMovie = props.savedMovies.map(item => {
-          return item.movieId
-        })
-
-        if (itemSavedMovie.includes(film.id)) {
-          return (
-            // <li key={film.id}>
-              <MoviesCard
-                saveFilm={props.saveFilm}
-                deleteFilm={props.deleteFilm}
-                key={film.id}
-                isPathSavedMovies={props.isPathSavedMovies}
-                film={film}
-                isSaved={true}
-              />
-            // </li>
-          )
-        } else {
-          return (
-            // <li key={film.id}>
-              <MoviesCard
-                saveFilm={props.saveFilm}
-                deleteFilm={props.deleteFilm}
-                key={film.id}
-                isPathSavedMovies={props.isPathSavedMovies}
-                film={film}
-                isSaved={false}
-              />
-            // </li>
-          )
-        }
-
       }
     })
-    // console.log(filmsFromSearch)
     return filmsFromSearch;
   }
 
+  function getSavedMovies() {
+    const filmsFromSearch = props.findedMovies.map((film) => {
+      return (
+        // <li key={props.isPathSavedMovies ? film.movieId : film.id}>
+        <MoviesCard
+          saveFilm={props.saveFilm}
+          deleteFilm={props.deleteFilm}
+          key={film.movieId}
+          isPathSavedMovies={props.isPathSavedMovies}
+          film={film}
+          url={film.image}
+          isSaved={true}
+        />
+        // </li>
+      )
+    })
+    return filmsFromSearch;
+
+  }
+
+  function showMoreFilms() {
+    if (width > 1279) {
+      setVisibleFilm(preValue => preValue + 3);
+    }
+    if (width <= 1279) {
+      setVisibleFilm(preValue => preValue + 2);
+    }
+  }
 
   function findNothing() {
     return (
@@ -75,56 +124,20 @@ export function MoviesCardList(props) {
     )
   }
 
-  // function handleClickMore (filmsArray, button) {
-
-  //   filmsArray.forEach((item) => {
-  //     item.classList.remove('movie_hidden')
-  //     button.classList.remove('movies-list__more-button_visidle')
-  //   })
-  // }
-
-  // function showFilms() {
-  //   if (props.isPathSavedMovies) {} else {
-  //     const button = document.querySelector('.movies-list__more-button');
-  //     const filmsArray = Array.from(document.querySelectorAll('.movie'))
-
-  //     // const filmsArray = getMovies();
-  //     console.log(filmsArray)
-  //     console.log(button)
-
-
-  //     if (window.innerWidth > 1279 && (filmsArray !== (null || undefined || 0))) {
-  //       button.classList.remove('movies-list__more-button_visidle')
-  //       filmsArray.forEach((item, index) => {
-  //         item.classList.add('movie_hidden')
-  //         if (index <= 11) {
-  //           item.classList.remove('movie_hidden')
-  //         } else if (index > 11) {
-  //           button.classList.add('movies-list__more-button_visidle')
-  //         }
-  //         handleClickMore(filmsArray, button)
-  //         // filmsArray.forEach((item) => {
-  //         //   item.classList.remove('movie_hidden')
-  //         //   button.classList.remove('movies-list__more-button_visidle')
-  //         // })
-  //       })
-  //     }
-  //   }
-  // }
 
   return (
     <section className="movies-list">
       <ul className="movies-list__container" >
         {(props.findedMovies.length === 0) ? findNothing() : getMovies()}
       </ul>
-      {/* {showFilms()} */}
+      {(visibleFilm < props.findedMovies.length) ?// ||(props.isPathSavedMovies === false) ?
 
-      <button className={`movies-list__more-button 
+        (<button className={`movies-list__more-button 
       ${(props.isPathSavedMovies || props.findedMovies.length === 0) ? "" : "movies-list__more-button_visidle"}`}
-        type="button"
-        // onClick={showFilms}
-      >Ещё</button>
-      {/* {showFilms()} */}
+          type="button"
+          onClick={showMoreFilms}
+        >Ещё</button>)
+        : ''}
     </section>
   )
 }
