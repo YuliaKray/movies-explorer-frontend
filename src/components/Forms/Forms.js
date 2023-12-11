@@ -83,6 +83,7 @@ export function Forms(props) {
           className={`forms__input forms__input_type_email ${(errors.email) ? "forms__input-error" : ""}`}
           type="email"
           name="email"
+          pattern="^\S+@\S+\.\S+$"
           required
           minLength="2"
           maxLength="40"

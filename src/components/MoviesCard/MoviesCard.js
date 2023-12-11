@@ -2,10 +2,8 @@ import "./MoviesCard.css";
 import savedButton from "../../images/saved.svg";
 import deleteButton from "../../images/delete-icon.svg";
 import React from "react";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 export function MoviesCard(props) {
-  // const currentUser = React.useContext(CurrentUserContext);
 
   function countDuration(duration) {
     const hours = Math.trunc(duration/60);
@@ -59,23 +57,13 @@ export function MoviesCard(props) {
       movieId: props.film.id,
     }
     props.saveFilm(movieItem)
-    // .then(() => {
-      // if (res) {
-        // здесь как будто можно пропс setIsSaved прокинуть
-        // props.isSaved=true
-        // isSaved()
-      // }
-    // });
   }
-
-
 
 
   return (
     <article className="movie" key={props.film.id}>
       {isPathSavedMovies()}
       <img className="movie__img" 
-      // src={props.isPathSavedMovies ? props.film.image : `https://api.nomoreparties.co/${props.film.image.url}`} 
       src={props.url} 
       alt={props.film.nameRU} 
       onClick={handleClick}/>

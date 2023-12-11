@@ -10,7 +10,7 @@ function useWindowWidth() {
     function updateSize() {
       setSize([window.innerWidth]);
     }
-    
+
     window.addEventListener('resize', updateSize);
     updateSize();
     return () => window.removeEventListener('resize', updateSize);
@@ -118,6 +118,19 @@ export function MoviesCardList(props) {
     }
   }
 
+  function fistSearch() {
+    const shortFromStorage = JSON.parse(localStorage.getItem('isShort'));
+    const inputFromStorage = JSON.parse(localStorage.getItem('inputValues'))
+    if (shortFromStorage === false && inputFromStorage === '') {
+      return (
+        <li><p className="movies-list__error-message">Введите первый запрос.</p></li>
+      )
+
+    } else {
+      return (props.findedMovies.length === 0) ? findNothing() : getMovies()
+    }
+  }
+
   function findNothing() {
     return (
       <li><p className="movies-list__error-message">Ничего не найдено.</p></li>
@@ -128,9 +141,12 @@ export function MoviesCardList(props) {
   return (
     <section className="movies-list">
       <ul className="movies-list__container" >
-        {(props.findedMovies.length === 0) ? findNothing() : getMovies()}
+        {/* {(!localStorage.getItem('movies')) ? fistSearch() : 
+        ((props.findedMovies.length === 0) ? findNothing() : getMovies())} */}
+        {/* {(props.findedMovies.length === 0) ? findNothing() : getMovies()} */}
+        {fistSearch()}
       </ul>
-      {(visibleFilm < props.findedMovies.length) ?// ||(props.isPathSavedMovies === false) ?
+      {(visibleFilm < props.findedMovies.length) ?
 
         (<button className={`movies-list__more-button 
       ${(props.isPathSavedMovies || props.findedMovies.length === 0) ? "" : "movies-list__more-button_visidle"}`}

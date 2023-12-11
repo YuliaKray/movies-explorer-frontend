@@ -1,21 +1,25 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import "./Profile.css";
 import { useFormWithValidation } from "../../utils/Validation";
-// import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 export function Profile(props) {
   const [isRedact, setIsRedact] = React.useState(false);
-  const [a, setA] = React.useState(true);
+  const [userData, setUserData] = React.useState(true);
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+  const currentUser = React.useContext(CurrentUserContext);
 
-  function checkUserData() {
-    if ((props.userName === values.name) && (props.userEmail === values.email)) {
-      console.log(props.userName, values.name, props.userEmail, values.email)
-      setA(false)
+  useEffect(() => {
+    if ((currentUser.name === values.name) || (currentUser.email === values.email)) {
+      console.log(currentUser.name, values.name, currentUser.email, values.email)
+      setUserData(false)
     } else {
-      setA(true)
+      console.log(currentUser.name, values.name, currentUser.email, values.email)
+
+      setUserData(true)
     }
-  }
+  }, [values, currentUser])
+
 
   function handleClick() {
     setIsRedact(!isRedact);
@@ -36,11 +40,11 @@ export function Profile(props) {
         <>
           {/* <span id="error-profile" className={`profile__error-message ${props.showError ? "profile__error-message_visible" : ""}`}>{props.showError}</span> */}
           <button
-            className={`profile__button-save ${(isValid && a) ? "" : "profile__button-save_disabled"}`}
+            className={`profile__button-save ${(isValid && userData) ? "" : "profile__button-save_disabled"}`}
             type="submit"
             onSubmit={handleSubmit}
             // onClick={props.haveError ? handleClick : ""}
-            disabled={(isValid && a) ? null : "disabled"}
+            disabled={(isValid && userData) ? null : "disabled"}
           >Сохранить</button>
         </>
       )
@@ -59,7 +63,7 @@ export function Profile(props) {
 
   return (
     <section className="profile">
-      <h1 className="profile__title">Привет, {props.userName}!</h1>
+      <h1 className="profile__title">Привет, {currentUser.name}!</h1>
       <form
         className="profile__form"
         onSubmit={handleSubmit}
@@ -70,7 +74,7 @@ export function Profile(props) {
           <input
             className={`profile__input profile__input_name ${errors.name ? "profile__input_error" : ""}`}
             id="profile-name"
-            value={isRedact ? values.name : props.userName}
+            value={isRedact ? values.name : currentUser.name/*props.userName*/}
             onChange={e => handleChange(e)}
             // placeholder={props.userName}
             placeholder="Имя"
@@ -92,11 +96,11 @@ export function Profile(props) {
             className={`profile__input profile__input_email ${errors.email ? "profile__input_error" : ""}`}
             id="profile-email"
             // value={props.userEmail || ''}
-            value={isRedact ? (values.email || props.username) : props.userEmail}
+            value={isRedact ? values.email : currentUser.email /*props.userEmail*/}
             onChange={e => handleChange(e)}
             placeholder="Почта"
             // placeholder={props.userEmail}
-
+            pattern="^\S+@\S+\.\S+$"
             type="email"
             name="email"
             required

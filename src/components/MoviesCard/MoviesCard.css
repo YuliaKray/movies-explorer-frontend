@@ -84,6 +84,10 @@
 }
 
 @media screen and (min-width: 890px) {
+  .movie__img:hover {
+    cursor: pointer;
+  }
+
   .movie__add:hover {
     cursor: pointer;
     opacity: 0.8;

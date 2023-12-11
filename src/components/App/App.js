@@ -36,26 +36,13 @@ function App() {
     mainApi.getMe().then((user) => {
       setCurrentUser(user);
       setLoggedIn(true);
-      
+
       setIsLoading(false)
     }).catch((err) => {
       setIsLoading(false);
     })
   }, [])
 
-
-  // React.useEffect(() => {
-  //   const moviesFromStorage = localStorage.getItem('movies');
-
-  //   if (moviesFromStorage) {
-  //   moviesApi.getAllMovies()
-  //   .then((movies) => {
-  //     setAllMovies(movies)
-  //     // console.log(movies)
-  //   })
-  //   .catch((err) => {console.log(err)})
-  // }
-  // }, [])
 
   function getAllMovies() {
     const moviesFromStorage = localStorage.getItem('movies');
@@ -64,7 +51,6 @@ function App() {
       moviesApi.getAllMovies()
         .then((movies) => {
           setAllMovies(movies)
-          // console.log(movies)
           setIsPreloader(false)
         })
         .catch((err) => {
@@ -73,7 +59,6 @@ function App() {
         })
     } else {
       setAllMovies(JSON.parse(moviesFromStorage))
-      // setIsLoading(false)
     }
   }
 
@@ -90,23 +75,23 @@ function App() {
 
   function getSavedFilms() {
     mainApi.getSavedFilms()
-    .then((films) => {
-      setSavedMovies(films);
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+      .then((films) => {
+        setSavedMovies(films);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   function handleDeleteMovie(film) {
     mainApi.deleteFilm(film)
-    .then(() => {
-      setSavedMovies((state) => state.filter((f) => f._id !== film._id ))
-    }
-    )
-    .catch((err) => {
-      console.log(err)
-    })
+      .then(() => {
+        setSavedMovies((state) => state.filter((f) => f._id !== film._id))
+      }
+      )
+      .catch((err) => {
+        console.log(err)
+      })
 
   }
 
@@ -128,6 +113,7 @@ function App() {
     return mainApi.register(name, email, password).then((res) => {
       setLoggedIn(true);
       setCurrentUser(res);
+      handleLogin({ email, password })
       navigate('/movies', { replace: true });
     }).catch((err) => {
       const wedplace = "регистрации пользователя";
@@ -166,7 +152,6 @@ function App() {
         if (res) {
           setLoggedIn(true);
           setIsLoading(false);
-          // getSavedFilms();
         }
 
       }).catch((err) => {
@@ -180,7 +165,9 @@ function App() {
   function signOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('movies');
-    localStorage.removeItem('searchMovies');
+    localStorage.removeItem('findedMovies');
+    localStorage.removeItem('isShort');
+    localStorage.removeItem('inputValues')
   }
 
   function handleTokenCheck() {
@@ -208,8 +195,8 @@ function App() {
             {isLoading ? handleTokenCheck : <Route path="/profile" element={<ProtectedRoute
               component={Profile}
               loggedIn={loggedIn}
-              userName={currentUser.name}
-              userEmail={currentUser.email}
+              // userName={currentUser.name}
+              // userEmail={currentUser.email}
               onEditProfile={handleUpdateProfile}
               onSignOut={signOut}
               showError={errMessage}

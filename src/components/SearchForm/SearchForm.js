@@ -5,25 +5,23 @@ import { useFormWithValidation } from "../../utils/Validation";
 import { useState, useEffect } from "react";
 
 export function SearchForm(props) {
-  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
-  const [input, setInput] = useState('')
+  const { values, handleChange, isValid, resetForm } = useFormWithValidation();
+  const [input, setInput] = useState(props.inputValues)
 
-  // function handleChange(e) {
-  //   setInputValue(e.target.value)
-  // }
   useEffect(() => {
-    // if (props.isPathSavedMovies) {
+    if (props.isPathSavedMovies === false) {
+    const lastSearchMovies = JSON.parse(localStorage.getItem('inputValues'));
+    setInput(lastSearchMovies)
+    }
+  }, [props.isPathSavedMovies])
 
-    // } else {
-    const lastSearchMovies = JSON.parse(localStorage.getItem('searchMovies'));
-    setInput(lastSearchMovies.inputValues)
-    // }
-  }, [])
+  useEffect(() => {
+    setInput(values.movie)
+  }, [values.movie])
 
   function handleSubmit (e) {
     e.preventDefault();
 
-    // props.getAllMovies();
     console.log(values)
     
     props.setInputValues(values.movie);
@@ -35,10 +33,10 @@ export function SearchForm(props) {
   return (
     <section className="search-form" aria-label="Поиск фильмов">
       <img className="search-form__img" src={searchPic} alt="Лупа" />
-      <form className="search-form__form" onSubmit={handleSubmit}>
+      <form className="search-form__form" onSubmit={handleSubmit} noValidate>
         <div className="search-form__form-wrap">
         <input 
-          // value={input || '' } //|| ""}
+          value={input}
           className={`search-form__input {/*isValid ? "" : "search-form__input_error"*/}`}
           onChange={(e) => handleChange(e)}
           placeholder="Фильм"
@@ -53,13 +51,11 @@ export function SearchForm(props) {
         disabled={(isValid) ? null : "disabled"}
         >Найти</button>
         </div>
-      {/* </form> */}
-      {/* здесь будут короткометражки */}
       <div className="search-form__wrap">
         <FilterCheckbox 
-        filter={props.filter}
-        // checkboxState={props.checkboxState}
+        // filter={props.filter}
         setIsShort={props.setIsShort}
+        isPathSavedMovies={props.isPathSavedMovies}
         />
         <p className="search-form__short-film">Короткометражки</p>
       </div>

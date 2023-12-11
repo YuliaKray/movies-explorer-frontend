@@ -1,6 +1,5 @@
 import "./SavedMovies.css"
 import { SearchForm } from "../SearchForm/SearchForm"
-// import Preloader from "../Preloader/Preloader"
 import { MoviesCardList } from "../MoviesCardList/MoviesCardList"
 import { useState, useEffect } from "react";
 
@@ -8,11 +7,11 @@ export function SavedMovies(props) {
   const [findedMovies, setFindedMovies] = useState([]);
   const [isShort, setIsShort] = useState(false);
   const [inputValues, setInputValues] = useState('');
-  // const [savedFilms, setSavedFilms] = useState(props.savedMovies)
 
   useEffect(() => {
     setFindedMovies(props.savedMovies)
   }, [props.savedMovies])
+
 
   function handleInputFilter() {
     const findedItem = props.savedMovies.filter(item => {
@@ -22,29 +21,14 @@ export function SavedMovies(props) {
       }
     });
 
-    // localStorage.setItem('searchMovies', JSON.stringify({
-    //   inputValues: inputValues,
-    //   isShort: isShort,
-    //   findedMovies: findedItem,
-    // }))
     setFindedMovies(findedItem);
-    console.log(findedItem)
-    console.log(findedMovies)
-    // return findedItem // findedMovies
-    // }
-
   }
 
   useEffect(() => {
     setInputValues(inputValues);
     setIsShort(isShort);
-    setFindedMovies(findedMovies);
     handleInputFilter();
-  }, [isShort, inputValues])
-
-  // useEffect(() => {
-  //   setFindedMovies(findedMovies);
-  // }, [props.savedMovies])
+  }, [isShort, inputValues, props.savedMovies])
 
 
   return (
@@ -56,7 +40,6 @@ export function SavedMovies(props) {
         setInputValues={setInputValues}
         setIsShort={setIsShort}
       />
-      {/* <Preloader/> */}
       <MoviesCardList
         isPathSavedMovies={true}
         findedMovies={findedMovies}
