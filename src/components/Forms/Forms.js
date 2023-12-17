@@ -57,7 +57,7 @@ export function Forms(props) {
           />
           <span
             id="error-name"
-            className={`forms__error-message ${(errors) ? "forms__error-message_visible" : ""}`}
+            className={`forms__error-message ${(errors.name) ? "forms__error-message_visible" : ""}`}
           >{showInputError("error-name", findInput("forms-name"))}</span>
         </>)
     }
@@ -90,7 +90,7 @@ export function Forms(props) {
         />
         <span
           id="error-email"
-          className={`forms__error-message ${(errors) ? "forms__error-message_visible" : ""}`}
+          className={`forms__error-message ${(errors.email) ? "forms__error-message_visible" : ""}`}
 
         >{showInputError("error-email", findInput("forms-email"))}</span>
 
@@ -108,7 +108,7 @@ export function Forms(props) {
           maxLength="200" />
         <span
           id="error-password"
-          className={`forms__error-message ${errors ? "forms__error-message_visible" : ""}`}
+          className={`forms__error-message ${errors.password ? "forms__error-message_visible" : ""}`}
         >{showInputError("error-password", findInput("forms-password"))}</span>
 
         <span id="error-submit" className={`forms__error-button ${props.path ?  "" : "forms__error-button_signin"} ${props.showError ? "forms__error-button_visible" : ""}`}>{props.showError}</span>

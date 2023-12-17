@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./Profile.css";
 import { useFormWithValidation } from "../../utils/Validation";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -72,6 +72,7 @@ export function Profile(props) {
         <div className="profile__wrap">
           <label className="profile__input-name" for="profile-name">Имя</label>
           <input
+            readOnly={isRedact ? '' : 'readOnly'}
             className={`profile__input profile__input_name ${errors.name ? "profile__input_error" : ""}`}
             id="profile-name"
             value={isRedact ? values.name : currentUser.name/*props.userName*/}
@@ -93,6 +94,7 @@ export function Profile(props) {
 
           <label className="profile__input-name" for="profile-email">Почта</label>
           <input
+            readOnly={isRedact ? '' : 'readOnly'}
             className={`profile__input profile__input_email ${errors.email ? "profile__input_error" : ""}`}
             id="profile-email"
             // value={props.userEmail || ''}
@@ -113,7 +115,7 @@ export function Profile(props) {
           className={`profile__error-message 
         ${props.showError ? "profile__error-message_visible" : ""} 
         ${props.showSuccess ? "profile__error-message_success" : ""}`}
-        >{props.showError ? props.showError : props.showSuccess}</span>
+        >{props.showError && !isRedact ? props.showError : props.showSuccess}</span>
 
         {redaction()}
       </form>

@@ -16,7 +16,7 @@ export function SavedMovies(props) {
   function handleInputFilter() {
     const findedItem = props.savedMovies.filter(item => {
       const filmName = item.nameRU + " " + item.nameEN;
-      if (filmName.toLowerCase().includes(inputValues)) {
+      if (filmName.toLowerCase().includes(inputValues.toLowerCase())) {
         return isShort ? (item.duration < 41 && item) : item
       }
     });
@@ -39,6 +39,7 @@ export function SavedMovies(props) {
         inputValues={inputValues}
         setInputValues={setInputValues}
         setIsShort={setIsShort}
+        isPathSavedMovies={true}
       />
       <MoviesCardList
         isPathSavedMovies={true}

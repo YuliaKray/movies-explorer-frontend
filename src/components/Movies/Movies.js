@@ -43,30 +43,37 @@ export function Movies(props) {
 
   useEffect(() => {
     setInputValues(inputValues);
-    setIsShort(isShort)
+    setIsShort(isShort);
+    // setFindedMovies(findedMovies)
     handleInputFilter()
-  }, [isShort, inputValues, allMovies])
+    // console.log("что-то происходит")
+  }, [isShort, inputValues, props.allMovies, allMovies])
 
   function handleInputFilter() {
-    props.getAllMovies();
-    const findedItem = props.allMovies.filter(item => {
+    // props.getAllMovies();
+    console.log(isShort, inputValues)
+//     const findedItem = props.allMovies.filter(item => {
+
+    const findedItem = (allMovies.length === 0 ? props.allMovies : allMovies).filter(item => {
 
       const filmName = item.nameRU + " " + item.nameEN;
-      if (filmName.toLowerCase().includes(inputValues)) {
+      if (filmName.toLowerCase().includes(inputValues.toLowerCase())) {
 
         return isShort ? (item.duration < 41 && item) : item
       }
     });
 
-    console.log(isShort, inputValues)
+    // console.log('props.allMovies', props.allMovies)
+    // console.log('allMovies', allMovies)
     setFindedMovies(findedItem);
-    console.log(findedItem)
-    console.log(findedMovies)
+    // console.log(findedItem)
+    // console.log(findedMovies)
   }
 
   return (
     <div className="movies" >
       <SearchForm
+        getAllMovies={props.getAllMovies}
         filter={handleInputFilter}
         isShort={isShort}
         inputValues={inputValues}

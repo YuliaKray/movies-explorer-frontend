@@ -35,7 +35,9 @@ export function MoviesCardList(props) {
     if (width < 760) {
       setVisibleFilm(5)
     }
-  }, [props.findedMovies, props.savedMovies, width])
+  }, [props.findedMovies, width, 
+    // props.savedMovies, 
+  ])
 
   function getMovies() {
     if (props.isPathSavedMovies) {
@@ -57,6 +59,7 @@ export function MoviesCardList(props) {
             return item
           }
         })
+        // console.log('ищем фильмы', )
         return savedMovieItem.map(item => (
           // <li key={film.id}>
           <MoviesCard
@@ -86,6 +89,7 @@ export function MoviesCardList(props) {
         )
       }
     })
+    // console.log('ищем фильмы', filmsFromSearch)
     return filmsFromSearch;
   }
 
