@@ -113,9 +113,9 @@ export function Profile(props) {
         <span
           id="error-profile"
           className={`profile__error-message 
-        ${props.showError ? "profile__error-message_visible" : ""} 
-        ${props.showSuccess ? "profile__error-message_success" : ""}`}
-        >{props.showError && !isRedact ? props.showError : props.showSuccess}</span>
+        ${props.showError && !isRedact ? "profile__error-message_visible" : ""} 
+        ${props.showSuccess && !isRedact ? "profile__error-message_success" : ""}`}
+        >{props.showError ? props.showError : props.showSuccess}</span>
 
         {redaction()}
       </form>
