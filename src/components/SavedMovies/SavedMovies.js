@@ -9,7 +9,8 @@ export function SavedMovies(props) {
   const [inputValues, setInputValues] = useState('');
 
   useEffect(() => {
-    setFindedMovies(props.savedMovies)
+    setFindedMovies(props.savedMovies);
+    console.log(props.savedMovies)
   }, [props.savedMovies])
 
 

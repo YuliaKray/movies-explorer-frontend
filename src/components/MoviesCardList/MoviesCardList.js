@@ -125,7 +125,7 @@ export function MoviesCardList(props) {
   function fistSearch() {
     const shortFromStorage = JSON.parse(localStorage.getItem('isShort'));
     const inputFromStorage = JSON.parse(localStorage.getItem('inputValues'))
-    if (shortFromStorage === false && inputFromStorage === '') {
+    if (shortFromStorage === false && inputFromStorage === '' && props.isPathSavedMovies === false) {
       return (
         <li><p className="movies-list__error-message">Введите первый запрос.</p></li>
       )
