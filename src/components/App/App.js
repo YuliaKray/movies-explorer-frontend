@@ -12,7 +12,7 @@ import { SavedMovies } from "../SavedMovies/SavedMovies";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import * as mainApi from "../../utils/MainApi.js"
 import { handleErrors } from "../../utils/errors.js";
-import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute.js";
+import { ProtectedRoute, UnProtectedRoute } from "../ProtectedRoute/ProtectedRoute.js";
 import * as moviesApi from "../../utils/MoviesApi.js";
 import React from "react";
 
@@ -184,11 +184,15 @@ function App() {
         {window.location.pathname === "/saved-movies" && <Header loggedIn={loggedIn} />}
         <main>
           <Routes>
-            <Route path="*" element={<NotFound />} />
-            <Route path="/signup" element={<Register
+            {/* <Route path="*" element={<NotFound />} /> */}
+            <Route path="/signup" element={<UnProtectedRoute
+              loggedIn={loggedIn}
+              component={Register}
               onRegister={handleRegister}
               showError={errMessage} />} />
-            <Route path="/signin" element={<Login
+            <Route path="/signin" element={<UnProtectedRoute
+              loggedIn={loggedIn}
+              component={Login}
               onLogin={handleLogin}
               showError={errMessage} />} />
             <Route path="/" element={<Main />} />
@@ -218,6 +222,8 @@ function App() {
               savedMovies={savedMovies}
               deleteFilm={handleDeleteMovie}
             />} />}
+
+            <Route path="*" element={<NotFound />} />
 
           </Routes>
         </main>

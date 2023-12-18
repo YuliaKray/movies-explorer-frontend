@@ -1,4 +1,6 @@
 export const BASE_URL = 'https://api.movies-yuliakray.nomoredomainsrocks.ru';
+// export const BASE_URL = 'http://localhost:3000';
+
 
 const handleResponse = (res) => {
   if (res.ok) {

@@ -6,3 +6,9 @@ export const ProtectedRoute = ({ component: Component, ...props }) => {
     props.loggedIn ? (<Component {...props} />) : <Navigate to="/" replace />
   )
 };
+
+export const UnProtectedRoute =({ component: Component, ...props }) => {
+  return (
+    props.loggedIn === false ? (<Component {...props} />) : <Navigate to="/" replace />
+  )
+}
