@@ -7,6 +7,10 @@
   position: relative;
 }
 
+.movie_hidden{
+  display: none;
+}
+
 .movie__add {
   position: absolute;
   top: 14px;
@@ -47,7 +51,7 @@
 }
 
 .movie__img {
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   grid-column: span 2;
   width: 360px;
@@ -80,6 +84,10 @@
 }
 
 @media screen and (min-width: 890px) {
+  .movie__img:hover {
+    cursor: pointer;
+  }
+
   .movie__add:hover {
     cursor: pointer;
     opacity: 0.8;

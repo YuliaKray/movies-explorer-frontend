@@ -95,7 +95,7 @@
   visibility: visible;
 }
 
-/* .forms__error-button {
+.forms__error-button {
   margin-top: 35px;
   color: #ff0000;
   visibility: hidden;
@@ -109,16 +109,18 @@
   min-height: 14px;
 }
 
+.forms__error-button_signin {
+  margin-top: 125px;
+}
+
 .forms__error-button_visible {
   visibility: visible;
 }
-*/
-
 
 .forms__submit-button {
   padding: 0;
-  /* margin-top: 20px; */
-  margin-top: 69px;
+  margin-top: 20px;
+  /* margin-top: 69px; */
   background-color: black;
   color: #fff;
   border: none;
@@ -129,6 +131,8 @@
   font-weight: 500;
   font-size: 14px;
   line-height: normal;
+  cursor: pointer;
+
 }
 
 /* .forms__submit-button:hover {
@@ -138,7 +142,15 @@
 } */
 
 .forms__submit-button_signin {
-  margin-top: 157px;
+  /* margin-top: 157px; */
+  /* margin-top: 125px; */
+
+}
+
+.forms__submit-button_disabled{
+  background-color: #F8F8F8;
+  color: #C2C2C2;
+  cursor: default;
 }
 
 .forms__container {
@@ -181,7 +193,7 @@
   }
 
   .forms__submit-button:hover {
-    cursor: pointer;
+    /* cursor: pointer; */
     opacity: 0.8;
     transition: opacity 2s ease;
   }
@@ -253,5 +265,17 @@
 
   .forms__caption-link {
     font-size: 12px;
+  }
+
+  .forms__error-button{
+    margin: 0;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 120px;
+    text-align: center;
+
   }
 }

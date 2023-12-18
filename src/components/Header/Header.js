@@ -6,7 +6,7 @@ export function Header(props) {
     <header className={`header ${props.backgroundColor ? "header_pink" : ""}`}>
       <a href="/" className="header__logo" title="На главную"></a>
       <Navigation backgroundColor={props.backgroundColor}
-        loggedIn={true}
+        loggedIn={props.loggedIn}
       />
     </header>
   )
