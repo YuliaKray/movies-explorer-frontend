@@ -26,35 +26,20 @@ export function SearchForm(props) {
     console.log(values)
 
     if (isValid) {
-    setErrorMessage('');
+      setErrorMessage('');
 
-    if (props.isPathSavedMovies === false) {
-      props.getAllMovies();
-    }
+      if (props.isPathSavedMovies === false) {
+        props.getAllMovies();
+      }
 
-    props.setInputValues(values.movie);
-    setInput(values.movie)
-    props.filter();
-    resetForm();
+      props.setInputValues(values.movie);
+      setInput(values.movie)
+      props.filter();
+      resetForm();
     } else {
       setErrorMessage('Нужно ввести ключевое слово')
     }
   }
-
-  // const showInputError = (spanId, errorMessage) => {
-  //   const spanElement = document.getElementById(spanId)
-  //   if (spanElement !== null) {
-  //     return spanElement.textContent = errorMessage;
-  //   }
-
-  // };
-
-  // const findInput = (inputId) => {
-  //   const inputElement = document.getElementById(inputId);
-  //   if (inputElement !== null) {
-  //     return inputElement.validationMessage;
-  //   }
-  // };
 
 
   return (
@@ -73,15 +58,12 @@ export function SearchForm(props) {
             required
             formNoValidate />
           <button
-            className={`search-form__button 
-        ${/*isValid ? "" : "search-form__button_disabled"*/ ''}`}
+            className={`search-form__button`}
             onSubmit={handleSubmit}
-          // disabled={(isValid) ? null : "disabled"}
           >Найти</button>
         </div>
         <div className="search-form__wrap">
           <FilterCheckbox
-            // filter={props.filter}
             setIsShort={props.setIsShort}
             isPathSavedMovies={props.isPathSavedMovies}
           />
@@ -91,8 +73,7 @@ export function SearchForm(props) {
           id="error-movie"
           className={`search-form__error-message ${(errors.movie) ? "search-form__error-message_visible" : ""}`}
         >{errorMessage}
-          {/*isValid ? '' : 'Нужно ввести ключевое слово'*/}
-        {/*showInputError("error-movie", findInput("movie"))*/}</span>
+        </span>
 
       </form>
     </section>

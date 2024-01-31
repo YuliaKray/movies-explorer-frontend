@@ -54,11 +54,8 @@
   object-position: center;
 }
 
-
-
 @media screen and (min-width: 890px) {
   .portfolio__link:hover {
-    /* cursor: pointer; */
     opacity: 0.7;
     transition: opacity 2s ease;
   }
@@ -83,7 +80,6 @@
 
 @media screen and (max-width: 734px) {
   .portfolio {
-    /* padding: 0 14px 65px; */
     padding: 0 14px 74px;
 
   }
@@ -106,7 +102,6 @@
   }
 
   .portfolio__link-img{
-    /* height: 28px; */
     height: 10px;
     align-self: center;
   }

@@ -7,8 +7,6 @@
   max-width: 1140px;
   padding: 0 calc((100% - 1140px)/2);
   width: calc( 100% - 140px );
-  /* width: 100%; */
-  /* box-sizing: border-box; */
 }
 
 .header_pink {
@@ -45,7 +43,6 @@
   .header {
     padding: 0 30px;
     width: calc( 100% - 60px );
-    /* box-sizing: border-box; */
   }
 }
 

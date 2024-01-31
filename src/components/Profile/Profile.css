@@ -4,7 +4,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* height: 100vh; */
   max-width: 410px;
 }
 
@@ -26,12 +25,10 @@
 }
 
 .profile__wrap {
-  /* max-width: 410px; */
   display: grid;
   grid-template-columns: repeat(2, 205px);
   grid-template-rows: repeat(2, fit-content);
   position: relative;
-  /* border-bottom: 1px solid #E8E8E8; */
 }
 
 .profile__input-name {
@@ -79,12 +76,7 @@
   border-radius: 3px;
 }
 
-
-
-
-
 .profile__button {
-  /* margin-top: 200px; */
   margin-top: 20px;
   padding: 0;
   background-color: transparent;
@@ -167,7 +159,6 @@
   }
 
   .profile__button-save:hover {
-    /* cursor: pointer; */
     opacity: 0.8;
     transition: opacity 2s ease;
   }

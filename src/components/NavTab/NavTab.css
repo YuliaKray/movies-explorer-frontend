@@ -18,7 +18,6 @@
 
 .navtab__link {
   margin: 0;
-  /* text-decoration: underline; */
   color: #fff;
   font-size: 13px;
   font-weight: 500;
@@ -29,7 +28,6 @@
 
 @media screen and (min-width: 890px) {
   .navtab__link:hover {
-    /* cursor: pointer; */
     opacity: 0.7;
     transition: opacity 2s ease;
   }

@@ -51,7 +51,7 @@ export function Navigation(props) {
   }
 
   return (
-    <nav className="navigation"> {/*вот тег nav */}
+    <nav className="navigation">
       <img
         className={`navigation__close ${nav ? "navigation__close_active" : ""}`}
         src={closeButton}

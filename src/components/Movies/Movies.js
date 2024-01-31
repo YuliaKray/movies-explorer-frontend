@@ -31,7 +31,6 @@ export function Movies(props) {
   const [allMovies, setAllMovies] = useState([]);
 
 
-  // хочу чтобы здесь обнавлялись фильмы
   useEffect(() => {
     if (localStorage.getItem('movies')) {
       setAllMovies(JSON.parse(localStorage.getItem('movies')));
@@ -44,15 +43,11 @@ export function Movies(props) {
   useEffect(() => {
     setInputValues(inputValues);
     setIsShort(isShort);
-    // setFindedMovies(findedMovies)
     handleInputFilter()
-    // console.log("что-то происходит")
   }, [isShort, inputValues, props.allMovies, allMovies])
 
   function handleInputFilter() {
-    // props.getAllMovies();
     console.log(isShort, inputValues)
-//     const findedItem = props.allMovies.filter(item => {
 
     const findedItem = (allMovies.length === 0 ? props.allMovies : allMovies).filter(item => {
 
@@ -63,11 +58,7 @@ export function Movies(props) {
       }
     });
 
-    // console.log('props.allMovies', props.allMovies)
-    // console.log('allMovies', allMovies)
     setFindedMovies(findedItem);
-    // console.log(findedItem)
-    // console.log(findedMovies)
   }
 
   return (

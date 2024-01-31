@@ -1,5 +1,4 @@
 .movie {
-  /* max-width: 360px; */
   display: grid;
   grid-template-columns: 1fr 66px;
   grid-template-rows: repeat(2, max-content);

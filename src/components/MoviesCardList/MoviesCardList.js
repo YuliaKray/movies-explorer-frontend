@@ -36,7 +36,6 @@ export function MoviesCardList(props) {
       setVisibleFilm(5)
     }
   }, [props.findedMovies, width, 
-    // props.savedMovies, 
   ])
 
   function getMovies() {
@@ -59,9 +58,7 @@ export function MoviesCardList(props) {
             return item
           }
         })
-        // console.log('ищем фильмы', )
         return savedMovieItem.map(item => (
-          // <li key={film.id}>
           <MoviesCard
             saveFilm={props.saveFilm}
             deleteFilm={props.deleteFilm}
@@ -71,11 +68,9 @@ export function MoviesCardList(props) {
             url={item.image}
             isSaved={true}
           />
-          // </li>
         ))
       } else {
         return (
-          // <li key={film.id}>
           <MoviesCard
             saveFilm={props.saveFilm}
             deleteFilm={props.deleteFilm}
@@ -85,18 +80,15 @@ export function MoviesCardList(props) {
             url={`https://api.nomoreparties.co/${film.image.url}`}
             isSaved={false}
           />
-          // </li>
         )
       }
     })
-    // console.log('ищем фильмы', filmsFromSearch)
     return filmsFromSearch;
   }
 
   function getSavedMovies() {
     const filmsFromSearch = props.findedMovies.map((film) => {
       return (
-        // <li key={props.isPathSavedMovies ? film.movieId : film.id}>
         <MoviesCard
           saveFilm={props.saveFilm}
           deleteFilm={props.deleteFilm}
@@ -106,7 +98,6 @@ export function MoviesCardList(props) {
           url={film.image}
           isSaved={true}
         />
-        // </li>
       )
     })
     return filmsFromSearch;
@@ -145,9 +136,6 @@ export function MoviesCardList(props) {
   return (
     <section className="movies-list">
       <ul className="movies-list__container" >
-        {/* {(!localStorage.getItem('movies')) ? fistSearch() : 
-        ((props.findedMovies.length === 0) ? findNothing() : getMovies())} */}
-        {/* {(props.findedMovies.length === 0) ? findNothing() : getMovies()} */}
         {fistSearch()}
       </ul>
       {(visibleFilm < props.findedMovies.length) ?

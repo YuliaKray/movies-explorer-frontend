@@ -184,7 +184,6 @@ function App() {
         {window.location.pathname === "/saved-movies" && <Header loggedIn={loggedIn} />}
         <main>
           <Routes>
-            {/* <Route path="*" element={<NotFound />} /> */}
             <Route path="/signup" element={<UnProtectedRoute
               loggedIn={loggedIn}
               component={Register}
@@ -199,8 +198,6 @@ function App() {
             {isLoading ? handleTokenCheck : <Route path="/profile" element={<ProtectedRoute
               component={Profile}
               loggedIn={loggedIn}
-              // userName={currentUser.name}
-              // userEmail={currentUser.email}
               onEditProfile={handleUpdateProfile}
               onSignOut={signOut}
               showError={errMessage}

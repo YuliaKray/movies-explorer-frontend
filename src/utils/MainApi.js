@@ -125,7 +125,6 @@ export const deleteFilm = (filmData) => {
   return fetch(`${BASE_URL}/movies/${filmData._id}`, {
     method: 'DELETE',
     headers: {
-      // authorization: this._authorization,
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
@@ -138,7 +137,6 @@ export const getSavedFilms = () => {
   return fetch(`${BASE_URL}/movies`, {
     method: 'GET',
     headers: {
-      // 'Accept': 'application/json',
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     }
