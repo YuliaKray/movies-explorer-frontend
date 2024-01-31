@@ -67,7 +67,6 @@
 
 .about-project__underline {
   margin: 0;
-  /* padding-bottom: 110px; */
   padding-top: 14px;
   font-size: 14px;
   font-weight: 500;
@@ -128,7 +127,6 @@
 
   .about-project__grid {
     margin-bottom: 60px;
-    /* grid-auto-flow: column; */
     grid-template-columns: minmax(min-content, max-content);
     gap: 16px 59px;
   }

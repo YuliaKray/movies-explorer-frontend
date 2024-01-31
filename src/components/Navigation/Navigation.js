@@ -1,5 +1,4 @@
 import './Navigation.css'
-// import profileLogo from '../../images/profileLogo.svg'
 import profilePink from '../../images/profile-pink.svg';
 import profileBlack from '../../images/profile-black.svg';
 import burgerMenu from '../../images/burger-menu.svg';
@@ -41,7 +40,6 @@ export function Navigation(props) {
   }
 
   function guest() {
-    // navigation__links-guest входит в элемент навигации, который обозначается тегом nav
     return (
       <ul className="navigation__links-guest">
         <li><a className='navigation__link-guest' href='/signup'>Регистрация</a></li>
@@ -53,7 +51,7 @@ export function Navigation(props) {
   }
 
   return (
-    <nav className="navigation"> {/*вот тег nav */}
+    <nav className="navigation">
       <img
         className={`navigation__close ${nav ? "navigation__close_active" : ""}`}
         src={closeButton}
@@ -61,7 +59,6 @@ export function Navigation(props) {
         onClick={handleNavigation}
       />
       <div className={`navigation__background ${nav ? "navigation__background_active" : ""}`} />
-      {/* {login()} */}
       {props.loggedIn ? login() : guest()} {/*здесь отрабатывают функции выбора между логина и guest*/}
     </nav>
   )

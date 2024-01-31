@@ -1,8 +1,10 @@
 import { Forms } from "../Forms/Forms";
 
-export function Login() {
+export function Login(props) {
   return (
     <Forms
+      onLogin={props.onLogin}
+      showError={props.showError}
       path={false}
       heading={"Рады видеть!"}
       buttonText={"Войти"}

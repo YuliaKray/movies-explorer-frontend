@@ -1,10 +1,13 @@
 .movie {
-  /* max-width: 360px; */
   display: grid;
   grid-template-columns: 1fr 66px;
   grid-template-rows: repeat(2, max-content);
   gap: 14px 30px;
   position: relative;
+}
+
+.movie_hidden{
+  display: none;
 }
 
 .movie__add {
@@ -47,7 +50,7 @@
 }
 
 .movie__img {
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   grid-column: span 2;
   width: 360px;
@@ -80,6 +83,10 @@
 }
 
 @media screen and (min-width: 890px) {
+  .movie__img:hover {
+    cursor: pointer;
+  }
+
   .movie__add:hover {
     cursor: pointer;
     opacity: 0.8;

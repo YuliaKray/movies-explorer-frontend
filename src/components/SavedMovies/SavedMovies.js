@@ -1,15 +1,51 @@
 import "./SavedMovies.css"
 import { SearchForm } from "../SearchForm/SearchForm"
-// import Preloader from "../Preloader/Preloader"
 import { MoviesCardList } from "../MoviesCardList/MoviesCardList"
+import { useState, useEffect } from "react";
 
-export function SavedMovies() {
+export function SavedMovies(props) {
+  const [findedMovies, setFindedMovies] = useState([]);
+  const [isShort, setIsShort] = useState(false);
+  const [inputValues, setInputValues] = useState('');
+
+  useEffect(() => {
+    setFindedMovies(props.savedMovies);
+    console.log(props.savedMovies)
+  }, [props.savedMovies])
+
+
+  function handleInputFilter() {
+    const findedItem = props.savedMovies.filter(item => {
+      const filmName = item.nameRU + " " + item.nameEN;
+      if (filmName.toLowerCase().includes(inputValues.toLowerCase())) {
+        return isShort ? (item.duration < 41 && item) : item
+      }
+    });
+
+    setFindedMovies(findedItem);
+  }
+
+  useEffect(() => {
+    setInputValues(inputValues);
+    setIsShort(isShort);
+    handleInputFilter();
+  }, [isShort, inputValues, props.savedMovies])
+
+
   return (
     <div className="movies saved-movies" >
-      <SearchForm />
-      {/* <Preloader/> */}
-      <MoviesCardList 
-        isSavedMovies={true} 
+      <SearchForm
+        filter={handleInputFilter}
+        isShort={isShort}
+        inputValues={inputValues}
+        setInputValues={setInputValues}
+        setIsShort={setIsShort}
+        isPathSavedMovies={true}
+      />
+      <MoviesCardList
+        isPathSavedMovies={true}
+        findedMovies={findedMovies}
+        deleteFilm={props.deleteFilm}
       />
     </div>
   )
